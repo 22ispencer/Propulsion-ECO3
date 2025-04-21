@@ -1,0 +1,45 @@
+-*- org-confirm-babel-evaluate: nil; -*-
+#+property: header-args:python :session notebook :results output :tangle analysis.py :eval yes
+#+startup: inlineimages
+
+* Extra Credit Opportunity 3
+
+#+begin_src python
+  import pandas as pd
+
+  df = pd.read_csv('ECO3.tsv', sep='\t', header=1)
+
+  df.columns = df.columns.str.replace(r" \(.+\)", '', regex=True)
+
+  df = df[df["RPM"] > 100]
+
+  print(df)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+         Time      T1      T2       T3       T4     P1     P2     P3     P4  Fuel Flow         RPM  Thrust
+144  6535.063  74.958  90.987  140.421   71.350 -0.007  0.100  0.076 -0.014       0.002   3271.188  -2.083
+145  6536.063  73.616  90.564  140.539   71.790 -0.006  0.143  0.120 -0.010       0.002   5909.857  -2.179
+146  6537.063  72.004  89.293  139.479   71.114 -0.007  0.208  0.183 -0.004       0.002   7688.479  -2.212
+147  6538.063  69.550  87.706  137.798   72.605  0.007  0.278  0.253  0.004       0.002   9610.008  -2.297
+148  6539.063  66.540  86.095  135.509   73.919  0.009  0.347  0.323  0.013      10.083  11465.359  -1.819
+..        ...     ...     ...      ...      ...    ...    ...    ...    ...         ...        ...     ...
+277  6668.071  23.639  66.541  313.786  430.229  0.001  0.316  0.294  0.016      -0.051  11472.228  -1.727
+278  6669.071  23.740  66.095  300.416  422.541 -0.000  0.278  0.256  0.011      -0.051  10646.562  -1.653
+279  6670.071  23.870  65.774  288.863  415.690 -0.000  0.249  0.224  0.007      -0.051   9767.882  -1.581
+280  6671.071  24.025  65.470  278.559  409.188 -0.000  0.225  0.201  0.004      -0.051   9016.508  -1.798
+281  6672.071  24.088  65.211  269.362  402.177 -0.000  0.205  0.181  0.002      -0.050   8366.928  -1.774
+
+[138 rows x 12 columns]
+#+end_example
+
+#+begin_src python :results graphics file output :file images/Thrust_vs_T04.png
+  import matplotlib.pyplot as plt
+
+  plt.title("T04 vs Thrust")
+  plt.plot(df["Thrust"], df["T4"])
+#+end_src
+
+#+RESULTS:
+[[file:images/Thrust_vs_T04.png]]
