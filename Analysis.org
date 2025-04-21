@@ -1,4 +1,4 @@
--*- org-confirm-babel-evaluate: nil -*-
+#+options: toc:nil num:0
 #+property: header-args:python :session :results output :tangle analysis.py :eval yes :exports both
 #+startup: inlineimages
 
@@ -75,3 +75,7 @@
 
 #+RESULTS:
 [[file:images/T04_vs_RPM.png]]
+
+# Local Variables:
+# org-confirm-babel-evaluate: nil
+# End:
