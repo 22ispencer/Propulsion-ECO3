@@ -1,5 +1,5 @@
 -*- org-confirm-babel-evaluate: nil -*-
-#+property: header-args:python :session :results output :tangle analysis.py :eval yes
+#+property: header-args:python :session :results output :tangle analysis.py :eval yes :exports both
 #+startup: inlineimages
 
 * Extra Credit Opportunity 3
@@ -30,7 +30,7 @@
 
 ** Find P_rc
 
-#+begin_src python
+#+begin_src python :exports both
   P_rc = np.mean(df["P2"]/df["P1"])
 
   print(f"{P_rc:.5g}")
@@ -41,7 +41,7 @@
 
 ** Plots
 
-#+begin_src python :results graphics file output :file images/T04_vs_Thrust.png
+#+begin_src python :results graphics file output :file images/T04_vs_Thrust.png :exports both
   plt.title("T04 vs Thrust")
   plt.xlabel("Thrust (lbs)")
   plt.ylabel("T04 (C)")
@@ -54,7 +54,7 @@
 #+RESULTS:
 [[file:images/T04_vs_Thrust.png]]
 
-#+begin_src python :results graphics file output :file images/RPM_vs_Thrust.png
+#+begin_src python :results graphics file output :file images/RPM_vs_Thrust.png :exports both
   plt.title("RPM vs Thrust")
   plt.xlabel("Thrust (lbs)")
   plt.ylabel("RPM")
@@ -65,7 +65,7 @@
 #+RESULTS:
 [[file:images/RPM_vs_Thrust.png]]
 
-#+begin_src python :results graphics file output :file images/T04_vs_RPM.png
+#+begin_src python :results graphics file output :file images/T04_vs_RPM.png :exports both
   plt.title("T04 vs RPM")
   plt.xlabel("RPM")
   plt.ylabel("T04 (C)")
