@@ -8,6 +8,8 @@
 
 #+begin_src python
   import pandas as pd
+  import numpy as np
+  from scipy.optimize import curve_fit
   import matplotlib.pyplot as plt
 #+end_src
 
@@ -26,21 +28,50 @@
 
 #+RESULTS:
 
+** Find P_rc
+
+#+begin_src python
+  P_rc = np.mean(df["P2"]/df["P1"])
+
+  print(f"{P_rc:.5g}")
+#+end_src
+
+#+RESULTS:
+: 35.868
+
 ** Plots
 
 #+begin_src python :results graphics file output :file images/T04_vs_Thrust.png
   plt.title("T04 vs Thrust")
   plt.xlabel("Thrust (lbs)")
   plt.ylabel("T04 (C)")
+  x = df["Thrust"]
+  y = df["T4"]
 
-  plt.plot(df["Thrust"], df["T4"])
+  plt.plot(x, y)
 #+end_src
 
 #+RESULTS:
 [[file:images/T04_vs_Thrust.png]]
 
-#+begin_src python :results graphics file output :file images/Thrust_vs_T04.png
+#+begin_src python :results graphics file output :file images/RPM_vs_Thrust.png
+  plt.title("RPM vs Thrust")
+  plt.xlabel("Thrust (lbs)")
+  plt.ylabel("RPM")
+
+  plt.plot(df["Thrust"], df["RPM"])
 #+end_src
 
 #+RESULTS:
-[[file:images/Thrust_vs_T04.png]]
+[[file:images/RPM_vs_Thrust.png]]
+
+#+begin_src python :results graphics file output :file images/T04_vs_RPM.png
+  plt.title("T04 vs RPM")
+  plt.xlabel("RPM")
+  plt.ylabel("T04 (C)")
+
+  plt.plot(df["RPM"], df["T4"])
+#+end_src
+
+#+RESULTS:
+[[file:images/T04_vs_RPM.png]]

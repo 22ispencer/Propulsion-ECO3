@@ -11,6 +11,7 @@
         buildInputs = with pkgs; [
           (python313.withPackages (pypkg: with pypkg; [
             pandas
+            scipy
             matplotlib
           ]))
         ];
